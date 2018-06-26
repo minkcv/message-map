@@ -4,8 +4,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
+var sanitize = require('sanitize-html');
 var login = process.env.LOGIN;
-// Commit 4194ef8bf8d8d90745e6deb82ddcb956a180ca09 sure is interesting
 mongoose.connect('mongodb://' + login + '@ds119171.mlab.com:19171/message-map');
 var Message = require('./message-model');
 
@@ -29,9 +29,9 @@ router.route('/message')
     .post(function(req, res) {
         var msg = new Message();
         console.log(req.body);
-        msg.name = req.body.name;
-        msg.lat = req.body.lat;
-        msg.long = req.body.long;
+        msg.name = sanitize(req.body.name);
+        msg.lat = sanitize(req.body.lat);
+        msg.long = sanitize(req.body.long);
         msg.save(function(err) {
             if (err)
                 res.send(err);
