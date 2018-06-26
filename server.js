@@ -4,7 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
-var login = 'secret';
+var login = process.env.LOGIN;
 mongoose.connect('mongodb://' + login + '@ds119171.mlab.com:19171/message-map');
 var Message = require('./message-model');
 
