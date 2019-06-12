@@ -2,4 +2,4 @@
 
 A simple geo messaging app
 
-![screen shot](screenshot.jpg)
+![screen shot](screenshot.png)
