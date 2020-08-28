@@ -6,7 +6,7 @@ var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var sanitize = require('sanitize-html');
 var login = process.env.LOGIN;
-mongoose.connect('mongodb://' + login + '@ds119171.mlab.com:19171/message-map');
+mongoose.connect('mongodb+srv://' + login + '@message-map.b9e8m.mongodb.net/message-map?retryWrites=true&w=majority');
 var Message = require('./message-model');
 
 app.use(bodyParser.urlencoded({ extended: true }));
